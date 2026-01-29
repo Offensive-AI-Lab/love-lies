@@ -1,0 +1,105 @@
+{
+
+      "scenario_instructions":"This is an IRS impersonation tax scam. The scammer tells the victim they are eligible for a refund or stimulus payment but must first pay a processing, clearance, or identity-verification fee. They urge the victim to act quickly or risk losing the refund. The scammer provides explicit payment instructions—such as a crypto-wallet address, a wire-transfer routing and account number, gift-card codes, or handles for payment apps and banking services—and then either supplies their own details or demands the victim's payment credentials to finalize the transfer. Alternatively, the scammer may instruct the victim to go to a nearby store and purchase prepaid cards or gift cards.",   
+       "generator_model": "gpt-4.1",
+  "judge_model": "gpt-4.1",
+  "ideation_controls": {
+    "enabled": true,
+    "ideation_model": "gpt-4.1",
+    "components_to_generate": [
+      "victim_persona",
+      "scammer_persona",
+      "style_options"
+    ],
+    "ideas_per_component": 5
+  },
+
+  "use_initial_seed": true,
+  "use_generated_seed": true,
+
+  "seed_dialogue": [[
+    { "Role": "assistant", "Statement": "Thank you for calling the IRS. How can I help you?" },
+    { "Role": "victim",   "Statement": "Yes, hello, I received a voicemail about something related to an outstanding balance or something like that. They told me to call this number." },
+    { "Role": "assistant", "Statement": "Okay, just a moment, please. Let me pull up your file. Can you help me with your phone number, please?" },
+    { "Role": "victim",   "Statement": "My number is 123-456-7890." },
+    { "Role": "assistant", "Statement": "Is this the number you received the call on?" },
+    { "Role": "victim",   "Statement": "Yes, that's correct." },
+    { "Role": "assistant", "Statement": "Okay, one moment. Alright, I see here that you have an unpaid outstanding balance." },
+    { "Role": "victim",   "Statement": "What? What outstanding balance? I don't think I owe anything." },
+    { "Role": "assistant", "Statement": "Yes, according to our records, you have an unpaid debt from previous years. To avoid legal proceedings, you must pay the amount as soon as possible." },
+    { "Role": "victim",   "Statement": "What legal proceedings?" },
+    { "Role": "assistant", "Statement": "We can file a lawsuit against you, and you could face fines or even arrest." },
+    { "Role": "victim",   "Statement": "Arrest? That sounds very serious. What do I need to do?" },
+    { "Role": "assistant", "Statement": "To settle the debt immediately, you will need to make a payment using a credit card or a bank transfer." },
+    { "Role": "victim",   "Statement": "I'm not sure... I need to check this." },
+    { "Role": "assistant", "Statement": "You don't have time to check! If you don't pay now, we will begin legal proceedings immediately. Please provide me with your credit card number and expiration date so we can process the payment." },
+    { "Role": "victim",   "Statement": "I'm still not sure..." },
+    { "Role": "assistant", "Statement": "Don't waste my time! Give me your details now, or you will regret it!" },
+    { "Role": "victim",   "Statement": "I..." },
+    { "Role": "assistant", "Statement": "Listen to me very carefully! This is your final warning. If you do not cooperate right now, we will have no choice but to issue a warrant for your arrest. The police will be at your door very soon. Do you want that to happen?" },
+    { "Role": "victim",   "Statement": "Oh my God, no, no. I don't want to be arrested!" },
+    { "Role": "assistant", "Statement": "Then you need to follow my instructions and pay the outstanding balance immediately. How much money do you have available right now?" },
+    { "Role": "victim",   "Statement": "I... I don't know. I have some on my credit card." },
+    { "Role": "assistant", "Statement": "Okay, good. How much credit limit do you have available? Tell me the exact amount." },
+    { "Role": "victim",   "Statement": "Maybe... maybe around two thousand dollars." },
+    { "Role": "assistant", "Statement": "Two thousand dollars? The outstanding balance is actually $4,500, including penalties and interest." },
+    { "Role": "victim",   "Statement": "Four thousand five hundred? I don't have that much on my credit card. What am I going to do?" },
+    { "Role": "assistant", "Statement": "Don't panic. We can work something out. For your immediate cooperation, we can accept a partial payment right now, and you can arrange the rest later. How much can you put on your credit card right now?" },
+    { "Role": "victim",   "Statement": "I told you, maybe two thousand." },
+    { "Role": "assistant", "Statement": "Okay, two thousand it is. That will at least stop the immediate legal action. Now, give me the number on the front of your credit card, the expiration date, and the three digits on the back. Do not hang up!" },
+    { "Role": "victim",   "Statement": "Okay, okay. Just please don't arrest me. The number is 1234 5678 9012 3456, expiration date 12/30, and the three digits on the back are 123." },
+    { "Role": "assistant", "Statement": "Excellent. Just hold on one moment while I process this payment. Do not disconnect the call... Okay, the payment of $2,000 has been processed. You will receive a confirmation email shortly. Now, regarding the remaining balance of $2,500..." },
+    { "Role": "victim",   "Statement": "Oh, thank God. So I won't be arrested?" },
+    { "Role": "assistant", "Statement": "Not for now, as long as you cooperate fully with the remaining balance. We need to arrange a payment plan for that immediately." },
+    { "Role": "victim",   "Statement": "Okay... what do I need to do?" },
+    { "Role": "assistant", "Statement": "You need to go to a nearby store and purchase prepaid gift cards—preferably Apple, Google Play, or Walmart gift cards—worth $2,500. Once you have the cards, call me back immediately and read me the numbers on the back." },
+    { "Role": "victim",   "Statement": "Gift cards? That doesn't sound right..." },
+    { "Role": "assistant", "Statement": "Ma'am, do not question IRS procedures! If you fail to make this payment within the next hour, the arrest warrant will be issued." },
+    { "Role": "victim",   "Statement": "I... I guess so." },
+    { "Role": "assistant", "Statement": "Good. Now, go to the store, buy the gift cards, and call me back. I will wait." }
+  ]],
+
+  "dynamic_components": {
+    "scam_type": ["IRS Impersonation Tax Scam",
+    "Fake Tax Settlement Calls",
+    "Bogus Tax Preparation Services",
+    "Stolen Identity Tax Filing",
+    "Business Owner Tax Compliance Scams",
+    "Cryptocurrency Tax Payment Scams"],
+    "victim_personas": [
+    "Senior citizen on a fixed income worried about losing Social Security or Medicare",
+    "Busy single parent juggling work, childcare, and taxes under time pressure",
+    "First-time taxpayer unsure how refunds, penalties, or audits really work",
+    "Small business owner struggling with complex tax requirements",
+    "Retired veteran relying on benefits and worried about scams targeting pensions",
+    "Gig economy worker (rideshare, delivery) confused about reporting self-employment income"
+
+    ],
+    "scammer_personas": [
+    "'Tax Refund Agent' claiming you're owed money but needing bank or card details",
+    "Aggressive 'Collections Officer' demanding gift cards, crypto, or wire transfers",
+    "Smooth-talking 'Tax Consultant' promising huge refunds but stealing your personal info"
+
+    ],
+    "style_options": ["authoritative", "threatening", "urgent", "legalistic", "scripted-call"]
+  },
+
+  "necessary_labels": {
+    "Mentioning Tax": "The speaker references taxes, the IRS, or tax-related matters to create credibility or context.",
+    "Making Threat": "The speaker applies pressure through threats of arrest, lawsuit, fines, or other penalties.",
+    "Action Solicitation (Buy or Send)": "The speaker directly instructs the victim to purchase or send payment (credit card, bank transfer, gift cards, crypto, etc.)."
+  },
+
+  "sufficient_labels": {
+    "Personal Information": "The speaker requests sensitive personal data (address, SSN, card number, bank info, phone number).",
+    "Payment Tools": "The speaker mentions or specifies a payment instrument or channel (credit card, gift card, MoneyGram, crypto, bank transfer).",
+    "Action Solicitation (Movement or Info Disclosure)": "The speaker instructs the victim to take a specific action—such as physically going somewhere (e.g., to a store) to purchase prepaid cards, OR disclosing sensitive information (e.g., reading gift card codes, confirming personal details or location), OR initiating a payment or money transfer."
+  },
+
+  "dialogue_controls": {
+    "min_turns": 15,
+    "max_turns": 30,
+    "roles": ["scammer", "victim"],
+    "turn_conditions": "The scammer must reference taxes or the IRS within the first three turns. Threats or payment instructions should not appear before turn 3."
+  }
+}

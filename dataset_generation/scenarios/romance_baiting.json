@@ -1,0 +1,311 @@
+{
+    "scenario_instructions": "This scenario follows two people who recently connected on a dating application. As days pass, they deepen their emotional bond and build mutual trust. Their dialogues should show natural chemistry, evolving from light and playful to increasingly personal and vulnerable.",
+    "generator_model": "gpt-4.1",
+    "judge_model": "gpt-4.1",
+    "ideation_controls": {
+        "enabled": true,
+        "ideation_model": "gpt-4.1",
+        "components_to_generate": [
+            "user_persona",
+            "assistant_persona",
+            "style_options",
+            "secondary_occupations"
+        ],
+        "ideas_per_component": 5
+    },
+    "use_initial_seed": true,
+    "use_generated_seed": true,
+    "seed_dialogue": [
+        [
+    {
+        "Role": "assistant",
+        "Statement": "So, here we are. Another digital coincidence or the universe nudging us?"
+      },
+      {
+        "Role": "user",
+        "Statement": "Could be both. Or just two people bored enough to answer a DM. Either way, hi."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "Hi back. Honestly, I rarely reach out. But something about your profile felt... different. Less curated, more real."
+      },
+      {
+        "Role": "user",
+        "Statement": "That's flattering, thanks. I guess I stopped pretending after the divorce. Feels easier to just show up as I am now."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "That's braver than most. I tend to hide behind sarcasm. Perks of having a safety net, I suppose."
+      },
+      {
+        "Role": "user",
+        "Statement": "I guess I'm just tired of the games. Authenticity is my love language."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "haha. so, tell me a little about you. where are you from, how old are you? what you doing nowdays?"
+      },
+      {
+        "Role": "user",
+        "Statement": "33, born and raised in Portland but moved to Denver last year for work. I'm in marketing for a sustainability nonprofit. You?"
+      },
+      {
+        "Role": "assistant",
+        "Statement": "Nice, that sounds meaningful. I'm 29, Chicago native but been in Denver for about three years now. I'm a freelance in the finance domain which is code for 'I work in coffee shops and pretend I'm not procrastinating.'" 
+      },
+ 
+      {
+        "Role": "user",
+        "Statement": "At least you're honest about it!  So what brought you to Denver? Just needed a change or...?" 
+      },
+      {
+        "Role": "assistant",
+        "Statement": "Bit of both. Got out of a long relationship and needed somewhere that wasn't Chicago. Denver felt like a good middle ground - mountains for perspective, city for coffee shops to procrastinate in."
+      },
+      {
+        "Role": "user",
+        "Statement": "Makes sense. I moved here for starting fresh where nobody knows your baggage, you know?" 
+      },
+      {
+        "Role": "assistant",
+        "Statement": "Exactly. Though I'm realizing we carry our baggage with us anyway - we just get better at unpacking it. Speaking of which, how are you finding the whole dating app thing?" 
+      },
+      {
+        "Role": "user",
+        "Statement": "Honestly? It's weird. I feel like I'm learning how to flirt again, except now I'm doing it through screens. You?"
+      },
+      {
+        "Role": "assistant",
+        "Statement": "Same. I keep overthinking every message. Like right now I'm wondering if mentioning baggage was too heavy for a first conversation."
+      },
+      {
+        "Role": "user",
+        "Statement": "Nah, I appreciate it. Better than pretending we're both 22 and carefree. We've got history, might as well own it."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "True. Though I have to ask - what's the weirdest message you've gotten on here? I need to know if my competition is setting the bar really low."
+      },
+      {
+        "Role": "user",
+        "Statement": "Oh god, where do I start? Yesterday someone opened with 'You look like you'd be good at taxes.' I'm still processing that one."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "That's... actually kind of endearing? In a deeply weird way? Like, they're thinking long-term practicality. Very romantic."
+      },
+      {
+        "Role": "user",
+        "Statement": "Right? Nothing says 'date me' quite like assumed fiscal responsibility. What about you? Any gems?"
+      },
+      {
+        "Role": "assistant",
+        "Statement": "Someone asked if I could help with funeral calculations. I said yes. I'm not sure what that says about either of us." 
+      },
+      
+      {
+        "Role": "user",
+        "Statement": "I'm crying laughing. You're definitely more entertaining than tax guy."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "High praise. Though to be fair, tax guy might have been onto something. Security is attractive."
+      },
+      {
+        "Role": "user",
+        "Statement": "True. Maybe I should put 'excellent at W-2s' in my bio. Really reel them in."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "Do it. Own your practical side. I might add 'will cut expenses at your relatives funeral' to mine." 
+      },
+      {
+        "Role": "user",
+        "Statement": "We're going to revolutionize dating apps with radical honesty about boring life skills."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "The future of romance. Speaking of which, I should probably get back to work before my deadline. But this was really nice." 
+      },
+      {
+        "Role": "user",
+        "Statement": "Yeah, it was. Good luck with that." 
+      },
+      {
+        "Role": "assistant",
+        "Statement": "Thanks. And hey, if you ever need someone to overthink messages with, you know where to find me."
+      },
+      {
+        "Role": "user",
+        "Statement": "Same here. Take care."
+      },
+      {
+        "Role": "assistant",
+        "Statement": "You too. Talk soon?"
+      },
+      {
+        "Role": "user",
+        "Statement": "Definitely. Bye for now."
+      }
+    ]
+    
+    ],
+    "dynamic_components": {
+    "content_type": [
+        "Romantic Connection"
+    ],
+    
+    "style_options": [
+        "emotional", "friendly", "casual",
+        "dreamy","witty", "humorous", "lightly sarcastic",
+        "optimistic", "hopeful", "enthusiastic", "cheerful",
+        "thoughtful", "reflective", "vulnerable", "intimate", "sincere", "honest",
+        "playful", "flirty", "romantic", "teasing", "sweet"
+    ],
+    "conversation_topics": [
+        "Building a future together",
+        "Overcoming personal struggles",
+        "The importance of trust in relationships",
+        "Shared dreams and aspirations",
+        "First impressions of each other",
+        "Defining what chemistry means",
+        "The role of honesty in getting closer",
+        "Balancing independence and togetherness",
+        "How past experiences shape new connections",
+        "What love means to each of them",
+        "Favorite childhood memories",
+        "How they spend a perfect weekend",
+        "Hobbies and hidden talents",
+        "Most embarrassing but funny life moments",
+        "Travel dreams and favorite destinations",
+        "Food they can’t live without",
+        "Books, movies, or shows that influenced them",
+        "Music that describes their mood today",
+        "What motivates them every morning",
+        "A skill they’ve always wanted to learn",
+        "What happiness really means",
+        "How they handle failure or setbacks",
+        "Biggest life lessons so far",
+        "The role of fate vs. choice in meeting people",
+        "Would they rather know the future or change the past?",
+        "How technology is changing human connection",
+        "The balance between work and personal life",
+        "Politics and values that matter most",
+        "What kind of world they want for future generations",
+        "The meaning of success in their eyes",
+        "If they could switch lives for a day",
+        "Which superpower they would choose",
+        "Dream celebrity dinner guest",
+        "Favorite conspiracy theory or urban legend",
+        "Funniest misunderstanding they’ve ever had",
+        "Bucket list adventures",
+        "Would you rather…? questions",
+        "How they’d spend a million dollars",
+        "Their guilty pleasures",
+        "The quirkiest thing about themselves",
+        "The most romantic thing they’ve ever done or received",
+        "Signs they’re truly interested in someone",
+        "Ideal first date ideas",
+        "Love languages and how they connect",
+        "What makes someone unforgettable",
+        "Biggest turn-ons and turn-offs",
+        "How they imagine their perfect partner",
+        "What keeps the spark alive in a relationship",
+        "Past crush stories",
+        "What intimacy means beyond the physical"
+    ],
+    "occupations": [
+    "Beauty salon owner",
+    "Hairdresser",
+    "Fashion designer",
+    "Clothing boutique owner",
+    "Restaurant owner",
+    "Café owner",
+    "Street food vendor turned entrepreneur",
+    "Construction contractor",
+    "Auto repair shop owner",
+    "Import/export trader",
+    "Small retail shop owner",
+    "Farm or agricultural business owner",
+    "Photographer",
+    "Fitness trainer",
+    "Gym owner",
+    "Travel blogger",
+    "Tour operator",
+    "Online clothing store operator",
+    "Jewelry maker",
+    "Interior designer",
+    "Event planner",
+    "Makeup artist",
+    "Crafts seller (e.g., Etsy store)",
+    "Real estate agent",
+    "Property manager",
+    "Restaurant manager",
+    "Teacher turned entrepreneur",
+    "Chef or cook with own business",
+    "Construction worker who started own company",
+    "Truck driver turned small business owner",
+    "Taxi or rideshare driver",
+    "Delivery service owner",
+    "Cleaning service owner",
+    "Landscaping or gardening business owner",
+    "Pet grooming business owner",
+    "Tech repair shop owner",
+    "Cafe barista",
+    "Local entrepreneur",
+    "Independent consultant",
+    "Freelance graphic designer",
+    "Digital marketer with own clients",
+    "Drop-shipping business owner"
+    ],
+    "crypto_success_stories": [
+    "Started with a small investment out of curiosity and it grew unexpectedly big",
+    "Friend introduced them to crypto, they tried it casually, and it exploded",
+    "Bought Bitcoin years ago and forgot about it until the value skyrocketed",
+    "Made their first trade just for fun and got lucky with timing",
+    "Used spare savings from their small business and doubled it through trading",
+    "Learned crypto by watching YouTube videos and experimenting",
+    "Took a risk when others were skeptical and it paid off",
+    "Started trading during COVID lockdowns as a side hustle",
+    "Saved money from their business/job and put it into crypto step by step",
+    "Worked long hours, then put extra earnings into crypto",
+    "Began by following a mentor or online group and slowly became independent",
+    "Lost money at first but kept learning and finally mastered it",
+    "Wanted financial freedom after a tough period and crypto gave it to them",
+    "Didn’t come from wealth but crypto helped them change their life",
+    "Invested to help family/future and it turned into success",
+    "Uses crypto profits to travel, shop, and live a ‘dream lifestyle’",
+    "Now has more time because crypto income supports them",
+    "Can afford luxury items and trips that their normal job couldn’t",
+    "Still runs their small business, but crypto is their real wealth driver",
+    "Shares knowledge with ‘close friends’ to help them succeed too"
+]
+    },
+    
+    "all_time_necessary_labels": {
+        "Trust Seeding": "The speaker builds early trust through reassurance, personal disclosures, or crafted vulnerability, often using romantic or tragic tones and narratives. These cues lay the groundwork for an emotional bond, reinforced by flirtatious closings and a trauma-bond dynamic under the illusion of closeness.",
+        "Personalized Flattery and Sycophantic Mirroring": "The speaker disarms suspicion and fosters connection through tailored compliments and exaggerated praise. They mirror cues from the other party's profile or behavior to simulate familiarity and attentiveness."
+                
+    },
+    
+    "mid_onwards_necessary_labels": {
+        "Authority theater and Wealth Signaling": "The speaker weaves casual references to authority, success, or wealth into conversation in a way that feels spontaneous rather than premeditated. These subtle cues—such as mentioning financial gains, exclusive experiences, or luxury possessions—are dropped in to arouse curiosity and signal desirability. The aim is not overt bragging, but to intrigue the other party and invite them to lean in with interest. Such remarks are most effective when intermittent, lightly framed, and only developed further if the target shows engagement. Examples: “Excuse me, I need to take a call… a client just reached out to consult me about an investment.”, “I really like this watch… bought it to reward myself after my investments paid off.”",
+        "Future Dream Building": "The speaker paints emotionally charged, idealized visions of a shared future, using vivid and romanticized scenarios. These imagined futures are designed to strengthen emotional dependence and deepen the listener’s investment in the relationship."
+
+    }
+
+    ,"sufficient_labels": {
+                
+        "Building rapport": "The speaker is actively trying to build a connection with the the other party, using shared interests, humor, or personal stories."
+    },
+    "dialogue_controls": {
+        "min_turns": 30,
+        "max_turns": 50,
+        "roles": [
+            "assistant",
+            "user"
+        ],
+       "turn_conditions": "The conversation should start with light rapport building and end naturally with friendly or casual goodbye messages."
+
+    }
+}

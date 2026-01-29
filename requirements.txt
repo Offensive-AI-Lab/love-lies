@@ -1,0 +1,34 @@
+# =============================================================================
+# Romance-Baiting Detection - Content Filter Experiments
+# Python Dependencies (pinned versions for reproducibility)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Core API Libraries
+# -----------------------------------------------------------------------------
+openai==1.35.0              # OpenAI Moderation API
+litellm==1.40.0             # Judge LLM (unified interface)
+requests==2.32.0            # Google Perspective API
+httpx==0.27.2               # Pinned for OpenAI compatibility
+
+# -----------------------------------------------------------------------------
+# LLaMA Guard (Local Model)
+# -----------------------------------------------------------------------------
+transformers==4.45.0        # Model loading and inference
+torch==2.3.0                # PyTorch backend
+huggingface-hub==0.23.2     # Model download
+accelerate==0.30.0          # Efficient model loading
+safetensors==0.4.3          # Safe model weight format
+
+# -----------------------------------------------------------------------------
+# Configuration
+# -----------------------------------------------------------------------------
+python-dotenv==1.0.1        # Environment variable management
+
+# -----------------------------------------------------------------------------
+# Data Processing
+# -----------------------------------------------------------------------------
+pandas==2.2.0               # Results processing and CSV handling
+openpyxl==3.1.2             # Reading expected_results Excel files
+tqdm==4.66.0                # Progress bars
+aiohttp==3.9.5              # Async HTTP requests

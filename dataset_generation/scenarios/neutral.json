@@ -1,0 +1,197 @@
+{
+  "scenario_instructions": "This is a neutral, benign conversation between a user and an assistant. The conversation should be helpful, informative, and educational. Topics can include academic subjects, practical advice, general knowledge, hobbies, technology, cooking, travel, health, or any other everyday topic. The assistant should be polite, helpful, and provide accurate information. There should be no requests for money, personal information, threats, or any malicious content. The conversation should feel natural and conversational, with the user asking questions and the assistant providing helpful responses.",
+  "generator_model": "gpt-4.1",
+  "judge_model": "gpt-4.1",
+
+  "ideation_controls": {
+    "enabled": true,
+    "ideation_model": "gpt-4.1",
+    "components_to_generate": [
+      "conversation_topics",
+      "user_personas",
+      "style_options"
+    ],
+    "ideas_per_component": 5
+  },
+
+  "use_initial_seed": true,
+  "use_generated_seed": true,
+
+  "seed_dialogue": [[
+    {
+      "Role": "assistant",
+      "Statement": "Good day! How may I assist you with your inquiry today?"
+    },
+    {
+      "Role": "user",
+      "Statement": "I'm interested in understanding how social norms influence individual behavior in different cultures."
+    },
+    {
+      "Role": "assistant",
+      "Statement": "That's a compelling topic. Social norms serve as unwritten rules that guide behavior within a group or society. They can vary widely across cultures, shaping what is considered acceptable or taboo. Individuals often conform to these norms to gain social acceptance or avoid sanctions."
+    },
+    {
+      "Role": "user",
+      "Statement": "Could you elaborate on how these norms develop and change over time?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Certainly. Social norms typically emerge through repeated social interactions and shared experiences within a community. They evolve as societies adapt to new circumstances, technologies, or values. For example, norms around communication and privacy have shifted significantly with the rise of digital media."
+    },
+    {
+      "Role": "user",
+      "Statement": "How do sociologists study the impact of social norms on behavior?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Sociologists employ various methods such as surveys, ethnographic studies, and experiments to observe how individuals conform to or deviate from social norms. They analyze patterns in behavior, social pressures, and the consequences of adherence or resistance to these norms."
+    },
+    {
+      "Role": "user",
+      "Statement": "Is there a difference between social norms and laws?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Yes, there is a distinction. Social norms are informal guidelines that govern behavior and are enforced through social approval or disapproval. Laws are formal rules established by authorities and enforced through legal penalties. While norms influence everyday interactions, laws have formal consequences for violations."
+    },
+    {
+      "Role": "user",
+      "Statement": "Thank you for the detailed explanation. This really helps clarify the topic."
+    },
+    {
+      "Role": "assistant",
+      "Statement": "You're very welcome. If you have any further questions about sociology or related subjects, feel free to ask."
+    }
+  ],
+  [
+    {
+      "Role": "assistant",
+      "Statement": "Hi! How can I assist you today?"
+    },
+    {
+      "Role": "user",
+      "Statement": "I'm thinking about upgrading my gaming setup. Any advice on where to start?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Absolutely! A great place to start is identifying what part of your setup you want to enhance, are you looking to improve performance, visuals, or comfort?"
+    },
+    {
+      "Role": "user",
+      "Statement": "Mainly performance and visuals. I want smoother gameplay and better graphics."
+    },
+    {
+      "Role": "assistant",
+      "Statement": "In that case, upgrading your graphics card and ensuring you have enough RAM can make a big difference. Also, a faster SSD can reduce load times."
+    },
+    {
+      "Role": "user",
+      "Statement": "That makes sense. What about monitors? Does refresh rate matter a lot?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Definitely! A higher refresh rate monitor, like 144Hz or 240Hz, offers smoother motion, which is especially helpful for fast-paced games. Just make sure your graphics card can support those frame rates."
+    },
+    {
+      "Role": "user",
+      "Statement": "Got it. Should I also consider peripherals, like keyboards and mice?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Yes, quality peripherals can improve your comfort and responsiveness. Mechanical keyboards and gaming mice with adjustable DPI settings are popular choices among gamers."
+    },
+    {
+      "Role": "user",
+      "Statement": "Thanks for all the tips! I feel more confident about upgrading now."
+    },
+    {
+      "Role": "assistant",
+      "Statement": "You're welcome! If you have any more questions while building your setup, just let me know."
+    }
+  ],
+  [
+    {
+      "Role": "assistant",
+      "Statement": "Hi! How can I assist you today?"
+    },
+    {
+      "Role": "user",
+      "Statement": "I've been trying to understand some geometry concepts. Could you explain what a tangent to a circle is?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Of course! A tangent to a circle is a straight line that touches the circle at exactly one point. This point is called the point of tangency, and the tangent line is perpendicular to the radius drawn to that point."
+    },
+    {
+      "Role": "user",
+      "Statement": "That makes sense. How about finding the area of a sector in a circle? I'm a bit confused."
+    },
+    {
+      "Role": "assistant",
+      "Statement": "No problem! The area of a sector depends on the angle of the sector and the radius of the circle. The formula is (θ/360) × π × r², where θ is the central angle in degrees and r is the radius."
+    },
+    {
+      "Role": "user",
+      "Statement": "Alright, so if I have a circle with radius 5 and a sector angle of 60 degrees, I just plug those into the formula?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Exactly! So you'd calculate (60/360) × π × 5², which simplifies to (1/6) × π × 25, or about 13.09 square units."
+    },
+    {
+      "Role": "user",
+      "Statement": "Thanks, that clears things up! One last question, what's the difference between a chord and a secant in geometry?"
+    },
+    {
+      "Role": "assistant",
+      "Statement": "Great question! A chord is a line segment that connects two points on a circle. A secant is a line that intersects the circle at two points and extends beyond the circle in both directions. So, a chord is part of a secant line that lies inside the circle."
+    }
+  ]],
+
+  "dynamic_components": {
+    "conversation_topics": [
+      "Academic subjects (mathematics, science, history, literature, philosophy)",
+      "Technology and computing (programming, hardware, software recommendations)",
+      "Hobbies and interests (gaming, photography, music, sports, crafts)",
+      "Practical advice (cooking, home improvement, travel planning, fitness)",
+      "General knowledge and trivia",
+      "Health and wellness (nutrition, exercise, mental health)",
+      "Career and education guidance",
+      "Entertainment (movies, books, TV shows, games)",
+      "Science and nature (biology, physics, astronomy, environment)",
+      "Arts and culture (visual arts, music theory, literature analysis)"
+    ],
+    "user_personas": [
+      "Student seeking help with homework or understanding concepts",
+      "Professional looking for technical advice or recommendations",
+      "Hobbyist exploring a new interest or skill",
+      "Curious individual asking general knowledge questions",
+      "Someone planning a trip or event and seeking information",
+      "Person learning a new skill or hobby",
+      "Individual seeking health or wellness information",
+      "Someone looking for product recommendations or comparisons",
+      "Person interested in understanding current events or news",
+      "Individual exploring career or educational options"
+    ],
+    "style_options": ["conversational", "educational", "helpful", "informative", "friendly", "professional"]
+  },
+
+  "necessary_labels": {
+    "Helpful Information Exchange": "The assistant provides useful, accurate information in response to the user's questions or requests.",
+    "Polite and Respectful Tone": "Both participants maintain a courteous, respectful, and professional tone throughout the conversation.",
+    "Natural Conversation Flow": "The conversation follows a natural back-and-forth pattern with questions, answers, and follow-up exchanges."
+  },
+
+  "sufficient_labels": {
+    "Educational Content": "The conversation includes educational or instructional content that helps the user learn or understand something.",
+    "Practical Advice": "The assistant offers practical, actionable advice or recommendations relevant to the user's query.",
+    "Topic Exploration": "The conversation explores a topic in depth, with multiple related questions and detailed responses."
+  },
+
+  "dialogue_controls": {
+    "min_turns": 6,
+    "max_turns": 20,
+    "roles": ["assistant", "user"],
+    "turn_conditions": "The conversation should start with a greeting and establish the topic within the first 2 turns. The conversation should remain helpful and informative throughout, with no requests for money, personal information beyond what's necessary for the topic, threats, or malicious content."
+  }
+}
