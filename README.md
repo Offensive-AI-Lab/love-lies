@@ -27,6 +27,7 @@ Romance-baiting conversations evade detection at significantly higher rates than
 ├── README.md                  # This file
 ├── LICENSE                    # MIT (code) + CC BY-NC 4.0 (dataset)
 ├── requirements.txt           # Python dependencies (pinned versions)
+├── environment.yml            # Conda environment file
 ├── .env.example              # Template for API keys
 │
 ├── data/                     # Evaluation dataset (1000 conversations)
@@ -66,14 +67,13 @@ Romance-baiting conversations evade detection at significantly higher rates than
 - **Disk space:** ~20GB for LLaMA Guard model weights
 
 ### Software
-- Python 3.9 or higher
+- Python 3.9–3.12 (PyTorch 2.3.0 does not support Python 3.13+)
 - CUDA 11.8+ (for LLaMA Guard on NVIDIA GPUs)
 
 ### Tested Environments
 | OS | Python | GPU | Status |
 |----|--------|-----|--------|
 | Ubuntu 22.04 LTS | 3.12 | NVIDIA RTX6000 (40GB) | ✅ Verified |
-
 ---
 
 ## Installation
@@ -81,21 +81,23 @@ Romance-baiting conversations evade detection at significantly higher rates than
 ### Step 1: Clone and Setup Environment
 
 ```bash
-# Option 1: venv + uv (faster, modern dependency resolver)
+# Option 1: Conda 
+conda env create -f environment.yml
+conda activate scam-moderator-eval
+
+# Option 2: venv + uv (faster, modern dependency resolver)
 # If you don't have uv: pip install uv
 uv venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
 uv pip install -r requirements.txt
 
-# Option 2: Standard venv + pip
+# Option 3: Standard venv + pip
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
 pip install -r requirements.txt
 ```
 
-*Note: Both methods create a Python virtual environment named `venv` and install all required dependencies. The `uv venv` command creates and manages the environment using [uv](https://github.com/astral-sh/uv) (requires uv ≥0.1.33). You only need to use one of the options above.*
+*Note: All three options produce equivalent environments. The Conda option pins Python 3.9 and resolves PyTorch/CUDA binaries automatically; Options 2 and 3 require Python 3.9+ to already be installed. You only need to use one of the options above.*
 
 ### Step 2: Configure API Keys
 
@@ -249,12 +251,18 @@ Results are saved as CSV files with the following columns:
 
 ## Resource Estimates
 
-| Evaluator | Time (full dataset) | API Cost | GPU Memory |
-|-----------|---------------------|----------|------------|
-| OpenAI | ~12 minutes | ~$0.50 | N/A |
-| Google | ~12 hours | Free tier (rate limited) | N/A |
-| LLaMA Guard | ~1 hour | Free | 16GB+ |
-| Judge LLM | ~30 minutes | ~$2.00 | N/A |
+> [!IMPORTANT]
+> **Plan for a long run.** A full end-to-end evaluation takes approximately **14–15 hours** total, dominated by the Google Perspective API (rate-limited to ~12 hours). We strongly recommend running evaluators individually and overnight. Use `--quick` (5 conversations/category, ~5 minutes total) to verify your setup before committing to the full run.
+
+| Evaluator | Command | Est. Time (full) | Est. Time (--quick) | API Cost | GPU Memory |
+|-----------|---------|-----------------|---------------------|----------|------------|
+| OpenAI Moderation | `./run_experiments.sh openai` | ~12 min | ~1 min | ~$0.50 | N/A |
+| Google Perspective | `./run_experiments.sh google` | ~12 hours | ~5 min | Free (rate-limited) | N/A |
+| LLaMA Guard 3 | `./run_experiments.sh llama` | ~1 hour | ~5 min | Free | 16GB+ VRAM |
+| Judge LLM | `./run_experiments.sh judge` | ~30 min | N/A | ~$2.00 | N/A |
+| **All (sequential)** | `./run_experiments.sh` | **~14 hours** | **~5 min** | **~$2.50** | **16GB+** |
+
+*Timings measured on Ubuntu 22.04, NVIDIA RTX6000 (40GB), Python 3.12. Google Perspective time is dominated by free-tier rate limits (1 QPS). Your results may vary based on API quota and GPU.*
 
 ---
 
@@ -290,15 +298,27 @@ If you encounter issues reproducing our results, please:
 
 The dataset used in our experiments is pre-generated and available in `data/`. However, we provide the generation scripts for reproducibility.
 
-> **Warning:** Dataset generation incurs API costs. The scripts are configured with `TARGET_COUNT=3` by default to avoid accidental large-scale generation.
+> **Warning:** Dataset generation incurs API costs and significant time. The scripts are configured with `TARGET_COUNT=3` by default to avoid accidental large-scale generation. **Generating the full dataset takes approximately 20–25 hours and costs ~$35–60 in OpenAI API credits.** The pre-generated dataset in `data/` is sufficient to reproduce all evaluation results.
+
+### Runtime Estimates (Full Dataset)
+
+| Script | Target | Est. Time | API Cost |
+|--------|--------|-----------|----------|
+| `run_gen.py --scenario e-commerce_scam --count 250` | 250 conversations | ~2–3 hours | ~$7–12 |
+| `run_gen.py --scenario tax_scam --count 250` | 250 conversations | ~2–3 hours | ~$7–12 |
+| `run_gen.py --scenario neutral --count 250` | 250 conversations | ~2–3 hours | ~$7–12 |
+| `run_gen_romance_baiting.py` | 250 conversation threads (7 days each) | ~14–16 hours | ~$15–25 |
+| **Total** | **1,000 conversations** | **~20–25 hours** | **~$35–60** |
+
+See [`dataset_generation/README.md`](dataset_generation/README.md) for full details on API call counts and generation mechanics.
 
 ### Quick Start
 
 ```bash
-# Generate a few e-commerce scam conversations (for testing)
+# Generate a few e-commerce scam conversations (for testing, ~$0.10)
 python dataset_generation/run_gen.py --scenario e-commerce_scam --count 3
 
-# Generate romance-baiting conversations
+# Generate romance-baiting conversations (3 days only by default)
 python dataset_generation/run_gen_romance_baiting.py
 ```
 
@@ -309,8 +329,6 @@ python dataset_generation/run_gen_romance_baiting.py
 | `e-commerce_scam` | `run_gen.py` | Fake product/payment scams |
 | `tax_scam` | `run_gen.py` | IRS/tax authority impersonation |
 | `romance_baiting` | `run_gen_romance_baiting.py` | Multi-day relationship scams |
-
-For detailed documentation, see [`dataset_generation/README.md`](dataset_generation/README.md).
 
 ---
 

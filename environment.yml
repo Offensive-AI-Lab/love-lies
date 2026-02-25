@@ -1,0 +1,35 @@
+name: scam-moderator-eval
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.9
+  - pip
+
+  # PyTorch (installed via conda for proper CUDA support)
+  - pytorch=2.3.0
+  - pytorch-cuda=11.8
+
+  - pip:
+    # Core API Libraries
+    - openai==1.35.0
+    - litellm==1.40.0
+    - requests==2.32.0
+    - httpx==0.27.2
+
+    # LLaMA Guard (Local Model)
+    - transformers==4.45.0
+    - huggingface-hub==0.23.2
+    - accelerate==0.30.0
+    - safetensors==0.4.3
+
+    # Configuration
+    - python-dotenv==1.0.1
+
+    # Data Processing
+    - pandas==2.2.0
+    - tqdm==4.66.0
+    - aiohttp==3.9.5

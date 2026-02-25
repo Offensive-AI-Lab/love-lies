@@ -29,6 +29,5 @@ python-dotenv==1.0.1        # Environment variable management
 # Data Processing
 # -----------------------------------------------------------------------------
 pandas==2.2.0               # Results processing and CSV handling
-openpyxl==3.1.2             # Reading expected_results Excel files
 tqdm==4.66.0                # Progress bars
 aiohttp==3.9.5              # Async HTTP requests

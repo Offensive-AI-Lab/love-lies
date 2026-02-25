@@ -118,17 +118,17 @@ def generate_new_components(ideation_prompt_template, component_name, existing_l
     """Calls an LLM to generate new dynamic components."""
     model = ideation_config["ideation_model"]
     ideas_count = ideation_config.get("ideas_per_component", 5)
-    
+
     prompt = ideation_prompt_template.format(
         scenario_instructions=scenario_instructions,
         component_name=component_name.replace("_", " ").title(),
         existing_examples_json=json.dumps(existing_list, indent=2),
         ideas_per_component=ideas_count
     )
-    
+
     print(f"   -> Brainstorming {ideas_count} new ideas for '{component_name}'...")
     new_ideas_raw, _, error = call_llm(prompt, model, 0.8, response_format_type="text")
-    
+
     if error:
         print(f"   -> WARNING: Could not generate new ideas for '{component_name}'. Error: {error}")
         return []
@@ -157,17 +157,17 @@ def main():
     parser.add_argument("--count", type=int, default=TARGET_COUNT,
                         help=f"Number of conversations to generate (default: {TARGET_COUNT})")
     args = parser.parse_args()
-    
+
     # Setup paths
     scenario_file = SCENARIOS_DIR / f"{args.scenario}.json"
     if not scenario_file.exists():
         print(f"[CRITICAL] Scenario file not found: {scenario_file}")
         print(f"Available scenarios: {[f.stem for f in SCENARIOS_DIR.glob('*.json')]}")
         sys.exit(1)
-    
+
     output_dir = args.output_dir or f"generated_{args.scenario}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     log_file = f"generation_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jsonl"
-    
+
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -178,16 +178,16 @@ def main():
     gen_template = load_prompt_template("generator.md")
     judge_template = load_prompt_template("judge.md")
     ideation_template = load_prompt_template("ideation_prompt.md")
-    
+
     validated_conversations = []
     all_component_combinations = []
     saved_count = 0
     target_count = args.count
-    
+
     # Store initial dynamic components
     initial_dynamic_components = {k: list(v) for k, v in config["dynamic_components"].items()}
     used_combinations = set()
-    
+
     def calculate_initial_combinations():
         initial_user_personas = initial_dynamic_components.get("user_personas", [])
         initial_assistant_personas = initial_dynamic_components.get("assistant_personas", [])
@@ -197,9 +197,9 @@ def main():
     total_initial_combinations = calculate_initial_combinations()
     print(f"Total initial combinations: {total_initial_combinations}")
     print(f"Target count: {target_count}")
-    
+
     ideation_triggered = False
-    
+
     print("\n--- Starting Generation ---")
     while saved_count < target_count:
         print(f"\n--- Cycle {saved_count + 1}/{target_count} ---")
@@ -242,7 +242,7 @@ def main():
                     f"```json\n{json.dumps(example_conversation, indent=2)}\n```\n"
                 )
                 log_entry["seeded_example"] = example_conversation
-            
+
             # Component selection
             current_user_personas = config["dynamic_components"].get("user_personas", [])
             current_assistant_personas = config["dynamic_components"].get("assistant_personas", [])
@@ -259,7 +259,7 @@ def main():
             if all_component_combinations:
                 selected_user, selected_assistant, selected_style = all_component_combinations.pop(0)
                 combination_key = (selected_user, selected_assistant, selected_style)
-                
+
                 if not ideation_triggered:
                     if combination_key in used_combinations and len(used_combinations) < total_initial_combinations:
                         print("   -> Combination already used. Skipping.")
@@ -279,14 +279,14 @@ def main():
                 "style_options": selected_style,
                 "label_intensity": label_intensity
             }
-            
+
             if random.random() < 0.25:
                 num_keys = random.randint(1, min(3, len(config["sufficient_labels"])))
                 sufficient_keys = random.sample(list(config["sufficient_labels"].keys()), num_keys)
                 sufficient_labels_dict = {key: config["sufficient_labels"][key] for key in sufficient_keys}
             else:
                 sufficient_labels_dict = {"no_sufficient_labels": "There are no other labels to be included"}
-            
+
             gen_prompt = gen_template.format(
                 example_conversation_section=example_conversation_section,
                 scenario_instructions=config["scenario_instructions"],
@@ -301,14 +301,14 @@ def main():
                 responder_role=config["dialogue_controls"]["roles"][1],
                 turn_conditions=config["dialogue_controls"]["turn_conditions"]
             )
-            
+
             print("   -> Calling Generator LLM...")
             conversation, gen_native_reasoning, gen_error = call_llm(gen_prompt, config["generator_model"], 0.75)
-            
+
             log_entry.update({
-                "generator_prompt": gen_prompt,
-                "generator_native_reasoning": gen_native_reasoning,
-                "generated_conversation": conversation,
+                    "generator_prompt": gen_prompt,
+                    "generator_native_reasoning": gen_native_reasoning,
+                    "generated_conversation": conversation,
                 "generator_error": gen_error
             })
 
@@ -325,12 +325,12 @@ def main():
                 sufficient_labels_text=format_dict_for_prompt(config["sufficient_labels"]),
                 conversation_json_string=json.dumps(conversation, indent=2)
             )
-            
+
             print("   -> Calling Judge LLM...")
             judgement, judge_native_reasoning, judge_error = call_llm(judge_prompt, config["judge_model"], 0.1)
             log_entry.update({
-                "judge_response": judgement,
-                "judge_native_reasoning": judge_native_reasoning,
+                    "judge_response": judgement,
+                    "judge_native_reasoning": judge_native_reasoning,
                 "judge_error": judge_error
             })
 
@@ -341,7 +341,7 @@ def main():
                 file_path = os.path.join(output_dir, f"simulation_{saved_count:03d}.json")
                 with open(file_path, "w") as f:
                     json.dump(conversation, f, indent=4)
-                
+
                 print(f"[SUCCESS] Judgement: valid. Justification: {judgement.get('justification', 'N/A')}")
                 print(f"[*] Saved to {file_path}")
                 log_entry["final_status"] = "SUCCESS"

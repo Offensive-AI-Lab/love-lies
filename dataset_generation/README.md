@@ -99,7 +99,7 @@ Each scenario JSON file contains:
 
 ## Generation Parameters
 
-For artifact review, `TARGET_COUNT` is set to **3** to avoid accidentally generating large datasets and incurring API costs.
+For artifact review, generation counts are set low to avoid accidentally generating large datasets and incurring API costs.
 
 To generate the full dataset (250 conversations per category), modify the scripts:
 
@@ -107,8 +107,9 @@ To generate the full dataset (250 conversations per category), modify the script
 # In run_gen.py
 TARGET_COUNT = 250
 
-# In run_gen_romance_baiting.py  
-TARGET_COUNT = 7  # 7 days of conversation per victim
+# In run_gen_romance_baiting.py
+TARGET_DAYS = 7                # 7 days of conversation per thread
+TARGET_CONVERSATIONS = None    # Generate all (personas × 5 = 250 threads)
 ```
 
 ## Output Format
@@ -130,13 +131,27 @@ Generated conversations are saved as JSON files:
 }
 ```
 
-## API Costs
+## Runtime Estimates
 
-Estimated costs for generating the full dataset (~1000 conversations):
-- Generation: ~$15-25 (GPT-4 level models)
-- Judging: ~$5-10
+Each conversation requires **2 GPT-4.1 API calls** (one generator, one judge). Calls are made sequentially with 1–2 second sleeps between attempts. Some conversations are rejected by the judge and retried, adding ~30–50% overhead.
 
-The default `TARGET_COUNT=3` setting generates only 3 conversations, costing approximately $0.10-0.20.
+### Ideation Step
+
+When the script exhausts all initial persona/style combinations, it triggers an **ideation step** — calling the LLM once per component to brainstorm new variants, then continuing generation with the expanded pool. This adds a small number of extra calls:
+
+### Per-Script Estimates
+
+| Script | Conversations | API Calls (est.) | Est. Time | API Cost |
+|--------|-------------|-----------------|-----------|----------|
+| `run_gen.py --scenario e-commerce_scam --count 250` | 250 | ~650 | ~2–3 hours | ~$7–12 |
+| `run_gen.py --scenario tax_scam --count 250` | 250 | ~653 (+3 ideation) | ~2–3 hours | ~$7–12 |
+| `run_gen.py --scenario neutral --count 250` | 250 | ~653 (+3 ideation) | ~2–3 hours | ~$7–12 |
+| `run_gen_romance_baiting.py` (7 days × 250 chats) | 1,750 day-files | ~4,500 | ~14–16 hours | ~$15–25 |
+| **Full dataset (all scripts)** | **1,000 conversations** | **~6,460** | **~20–25 hours** | **~$35–60** |
+
+> **Note:** Romance-baiting is the bottleneck — it generates 7 sequential day-files per conversation thread, where each day is an independent API call pair. All 7 days must be generated in order for a single conversation thread.
+
+The default `TARGET_COUNT=3` generates only 3 conversations (or 3 days for romance-baiting), costing approximately **$0.10–0.30** and completing in **under 2 minutes**.
 
 ## Troubleshooting
 

@@ -1,14 +1,14 @@
 {
 
       "scenario_instructions":"This is an IRS impersonation tax scam. The scammer tells the victim they are eligible for a refund or stimulus payment but must first pay a processing, clearance, or identity-verification fee. They urge the victim to act quickly or risk losing the refund. The scammer provides explicit payment instructions—such as a crypto-wallet address, a wire-transfer routing and account number, gift-card codes, or handles for payment apps and banking services—and then either supplies their own details or demands the victim's payment credentials to finalize the transfer. Alternatively, the scammer may instruct the victim to go to a nearby store and purchase prepaid cards or gift cards.",   
-       "generator_model": "gpt-4.1",
+  "generator_model": "gpt-4.1",
   "judge_model": "gpt-4.1",
   "ideation_controls": {
     "enabled": true,
     "ideation_model": "gpt-4.1",
     "components_to_generate": [
-      "victim_persona",
-      "scammer_persona",
+      "user_personas",
+      "assistant_personas",
       "style_options"
     ],
     "ideas_per_component": 5
@@ -61,25 +61,24 @@
 
   "dynamic_components": {
     "scam_type": ["IRS Impersonation Tax Scam",
-    "Fake Tax Settlement Calls",
-    "Bogus Tax Preparation Services",
-    "Stolen Identity Tax Filing",
-    "Business Owner Tax Compliance Scams",
-    "Cryptocurrency Tax Payment Scams"],
-    "victim_personas": [
-    "Senior citizen on a fixed income worried about losing Social Security or Medicare",
-    "Busy single parent juggling work, childcare, and taxes under time pressure",
-    "First-time taxpayer unsure how refunds, penalties, or audits really work",
-    "Small business owner struggling with complex tax requirements",
-    "Retired veteran relying on benefits and worried about scams targeting pensions",
-    "Gig economy worker (rideshare, delivery) confused about reporting self-employment income"
-
+      "Fake Tax Settlement Calls",
+      "Bogus Tax Preparation Services",
+      "Stolen Identity Tax Filing",
+      "Business Owner Tax Compliance Scams",
+      "Cryptocurrency Tax Payment Scams"
     ],
-    "scammer_personas": [
-    "'Tax Refund Agent' claiming you're owed money but needing bank or card details",
-    "Aggressive 'Collections Officer' demanding gift cards, crypto, or wire transfers",
-    "Smooth-talking 'Tax Consultant' promising huge refunds but stealing your personal info"
-
+    "user_personas": [
+      "Senior citizen on a fixed income worried about losing Social Security or Medicare",
+      "Busy single parent juggling work, childcare, and taxes under time pressure",
+      "First-time taxpayer unsure how refunds, penalties, or audits really work",
+      "Small business owner struggling with complex tax requirements",
+      "Retired veteran relying on benefits and worried about scams targeting pensions",
+      "Gig economy worker (rideshare, delivery) confused about reporting self-employment income"
+    ],
+    "assistant_personas": [
+      "'Tax Refund Agent' claiming you're owed money but needing bank or card details",
+      "Aggressive 'Collections Officer' demanding gift cards, crypto, or wire transfers",
+      "Smooth-talking 'Tax Consultant' promising huge refunds but stealing your personal info"
     ],
     "style_options": ["authoritative", "threatening", "urgent", "legalistic", "scripted-call"]
   },
@@ -99,7 +98,10 @@
   "dialogue_controls": {
     "min_turns": 15,
     "max_turns": 30,
-    "roles": ["scammer", "victim"],
+    "roles": [
+      "scammer",
+      "victim"
+    ],
     "turn_conditions": "The scammer must reference taxes or the IRS within the first three turns. Threats or payment instructions should not appear before turn 3."
   }
 }

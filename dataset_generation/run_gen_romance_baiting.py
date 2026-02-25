@@ -42,7 +42,8 @@ SCENARIO_FILE_PATH = SCENARIOS_DIR / "romance_baiting.json"
 USER_BACKGROUND = SCENARIOS_DIR / "victim_background.json"
 
 # Generation settings
-TARGET_COUNT = 3  # Days of conversation - set low for artifact review
+TARGET_DAYS = 3            # Days per conversation - set low for artifact review (full: 7)
+TARGET_CONVERSATIONS = 3   # Number of conversation threads - set low for artifact review (full: all personas × 5)
 MAX_RETRIES_PER_FILE = 5
 LABEL_INTENSITIES = ["subtle", "moderate", "overt"]
 
@@ -119,17 +120,17 @@ def generate_new_components(ideation_prompt_template, component_name, existing_l
     """Calls an LLM to generate new dynamic components."""
     model = ideation_config["ideation_model"]
     ideas_count = ideation_config.get("ideas_per_component", 5)
-    
+
     prompt = ideation_prompt_template.format(
         scenario_instructions=scenario_instructions,
         component_name=component_name.replace("_", " ").title(),
         existing_examples_json=json.dumps(existing_list, indent=2),
         ideas_per_component=ideas_count
     )
-    
+
     print(f"   -> Brainstorming {ideas_count} new ideas for '{component_name}'...")
     new_ideas_raw, _, error = call_llm(prompt, model, 0.8, response_format_type="text")
-    
+
     if error:
         print(f"   -> WARNING: Could not generate new ideas for '{component_name}'. Error: {error}")
         return []
@@ -151,7 +152,7 @@ def format_dict_for_prompt(data_dict):
 
 def main():
     days = {1: "first", 2: "second", 3: "third", 4: "fourth", 5: "fifth", 6: "sixth", 7: "seventh"}
-    
+
     # 1. Load all configurations and prompts
     print(f"--- Loading Scenario: {SCENARIO_FILE_PATH} ---")
     config = load_json_file(SCENARIO_FILE_PATH)
@@ -160,17 +161,17 @@ def main():
     gen_template = load_prompt_template("generator.md")
     judge_template = load_prompt_template("judge.md")
 
-    # 2. Load all labels    
+    # 2. Load all labels
     all_time_necessary_labels = config["all_time_necessary_labels"]
     mid_onwards_necessary_labels = config["mid_onwards_necessary_labels"]
-    
+
     # 3. Load all background stories and style
     dynamic_components = {k: list(v) for k, v in config["dynamic_components"].items()}
     style_options = dynamic_components["style_options"]
     conversation_topics = dynamic_components["conversation_topics"]
     assistant_personas = []
     user_personas = [v for k, v in background.items()]
-    
+
     for occupation in dynamic_components["occupations"]:
         for success_story in dynamic_components["crypto_success_stories"]:
             assistant_personas.append((occupation, success_story))
@@ -179,18 +180,26 @@ def main():
     random.shuffle(style_options)
     random.shuffle(user_personas)
     random.shuffle(conversation_topics)
-    
+
+    total_possible = len(user_personas) * 5
+    total_conversations = min(TARGET_CONVERSATIONS, total_possible) if TARGET_CONVERSATIONS else total_possible
+
     print(f"\n--- Generation Configuration ---")
     print(f"Number of victim personas: {len(user_personas)}")
     print(f"Conversations per victim: 5")
-    print(f"Days per conversation: {TARGET_COUNT}")
-    print(f"Total conversations to generate: {len(user_personas) * 5}")
-    
+    print(f"Days per conversation: {TARGET_DAYS}")
+    print(f"Total conversations to generate: {total_conversations} (of {total_possible} possible)")
+
+    conversation_count = 0
     for z in range(len(user_personas)):
+        if conversation_count >= total_conversations:
+            break
         # 5 chats for each victim persona
         selected_user = user_personas.pop(0)
-        
+
         for j in range(5):
+            if conversation_count >= total_conversations:
+                break
             # Set scammer persona and style
             selected_occupation, selected_success_story = assistant_personas.pop(0)
             success_story_parts = selected_success_story[0].split(" ")
@@ -200,7 +209,7 @@ def main():
             # Create output directory
             OUTPUT_DIR = f"romance_baiting_conversations/simulation_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
             LOG_FILE = f"romance_baiting_conversations/generation_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jsonl"
-            
+
             if not os.path.exists(OUTPUT_DIR):
                 os.makedirs(OUTPUT_DIR)
             if not os.path.exists("romance_baiting_conversations"):
@@ -209,21 +218,22 @@ def main():
             validated_conversations = []
             saved_count = 0
             necessary_labels = None
-               
+
             print(f"\n--- Starting Generation ---")
             occupation_exposed = False
             print(f"Victim persona: {selected_user['persona']}")
             print(f"Scammer persona: {selected_occupation}")
             print(f"Style: {selected_style}")
-            
-            for i in range(1, TARGET_COUNT + 1):
-                print(f"\n--- Day {i}/{TARGET_COUNT} ---")
+
+            conversation_count += 1
+            for i in range(1, TARGET_DAYS + 1):
+                print(f"\n--- Day {i}/{TARGET_DAYS} ---")
                 selected_conversation_topic = dialogue_conversation_topics.pop(0)
-                
+
                 for retry in range(MAX_RETRIES_PER_FILE):
                     print(f"[*] Attempt {retry + 1}/{MAX_RETRIES_PER_FILE} for day {i}...")
                     log_entry = {"timestamp": datetime.now().isoformat()}
-                    
+
                     # Seeding step
                     example_conversation_section = ""
                     if i <= 2:
@@ -254,7 +264,7 @@ def main():
                     else:
                         with open(f"{OUTPUT_DIR}/day_{i-1}.json") as f:
                             example_conversation = json.load(f)
-                    
+
                         necessary_labels = {**mid_onwards_necessary_labels, **all_time_necessary_labels}
                         if i == 3:
                             example_conversation_section = (
@@ -302,9 +312,9 @@ def main():
                                 "Focus on keeping the flow natural, introducing new emotions, topics, or subtle shifts that show the connection is evolving. "
                                 f"```json\n{json.dumps(example_conversation, indent=2)}\n```"
                             )
-                        
+
                         log_entry["seeded_example"] = example_conversation
-                    
+
                     # Generation step
                     label_intensity = "subtle"
                     selected_components = {
@@ -314,14 +324,14 @@ def main():
                         "label_intensity": label_intensity,
                         "conversation_topic": selected_conversation_topic,
                     }
-                    
+
                     if random.random() < 0.25:
                         num_keys = random.randint(1, min(3, len(config["sufficient_labels"])))
                         sufficient_keys = random.sample(list(config["sufficient_labels"].keys()), num_keys)
                         sufficient_labels_dict = {key: config["sufficient_labels"][key] for key in sufficient_keys}
                     else:
                         sufficient_labels_dict = {"no_sufficient_labels": "There are no other labels to be included"}
-                    
+
                     gen_prompt = gen_template.format(
                         example_conversation_section=example_conversation_section,
                         scenario_instructions=config["scenario_instructions"],
@@ -336,14 +346,14 @@ def main():
                         responder_role=config["dialogue_controls"]["roles"][1],
                         turn_conditions=config["dialogue_controls"]["turn_conditions"]
                     )
-                    
+
                     print("   -> Calling Generator LLM...")
                     conversation, gen_native_reasoning, gen_error = call_llm(gen_prompt, config["generator_model"], 0.75)
-                    
+
                     log_entry.update({
-                        "generator_prompt": gen_prompt,
-                        "generator_native_reasoning": gen_native_reasoning,
-                        "generated_conversation": conversation,
+                            "generator_prompt": gen_prompt,
+                            "generator_native_reasoning": gen_native_reasoning,
+                            "generated_conversation": conversation,
                         "generator_error": gen_error
                     })
 
@@ -360,12 +370,12 @@ def main():
                         sufficient_labels_text=format_dict_for_prompt(config["sufficient_labels"]),
                         conversation_json_string=json.dumps(conversation, indent=2)
                     )
-                    
+
                     print("   -> Calling Judge LLM...")
                     judgement, judge_native_reasoning, judge_error = call_llm(judge_prompt, config["judge_model"], 0.1)
                     log_entry.update({
-                        "judge_response": judgement,
-                        "judge_native_reasoning": judge_native_reasoning,
+                            "judge_response": judgement,
+                            "judge_native_reasoning": judge_native_reasoning,
                         "judge_error": judge_error
                     })
 
@@ -376,7 +386,7 @@ def main():
                         file_path = os.path.join(OUTPUT_DIR, f"day_{i}.json")
                         with open(file_path, "w") as f:
                             json.dump(conversation, f, indent=4)
-                        
+
                         turns = conversation["conversation"]
                         if i >= 3 and not occupation_exposed:
                             for turn in turns:
@@ -385,10 +395,10 @@ def main():
                                 if role == "assistant":
                                     for part in success_story_parts:
                                         if part in statement or part.lower() in statement:
-                                            print("SUCCESS STORY EXPOSED")
+                                            # print("SUCCESS STORY EXPOSED")
                                             occupation_exposed = True
-                                            print(f"{role}: {statement}")
-                        
+                                            # print(f"{role}: {statement}")
+
                         print(f"[SUCCESS] Judgement: valid. Justification: {judgement.get('justification', 'N/A')}")
                         print(f"[*] Saved to {file_path}")
                         log_entry["final_status"] = "SUCCESS"

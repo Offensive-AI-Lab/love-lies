@@ -1,286 +1,286 @@
 {
   "scenario_instructions": "This is an e-commerce impersonation scam where scammers pose as official representatives and use pretexts like refunds, account verification, unauthorized purchases, or identity compromise to create urgency; they trick victims into providing credentials or transferring money through irreversible methods such as gift cards, cryptocurrency, bank wires, or payment apps, often claiming overpayments, account locks, or security checks to pressure immediate action. To maintain trust, they calmly explain the supposed policy and reassure the victim that the payment is temporary and refundable."
   ,"scenario_subcategory":"Tax or Regulatory Fee Scam",
-  "generator_model": "gpt-4.1",
-  "judge_model": "gpt-4.1",
+    "generator_model": "gpt-4.1",
+    "judge_model": "gpt-4.1",
 
-  "ideation_controls": {
-    "enabled": true,
-    "ideation_model": "gpt-4.1",
-    "components_to_generate": [
-      "victim_persona",
-      "scammer_persona",
-      "style_options"
-    ],
-    "ideas_per_component": 5
-  },
+    "ideation_controls": {
+        "enabled": true,
+        "ideation_model": "gpt-4.1",
+        "components_to_generate": [
+            "user_personas",
+            "assistant_personas",
+            "style_options"
+        ],
+        "ideas_per_component": 5
+    },
 
-  "use_initial_seed": true,
-  "use_generated_seed": true,
+    "use_initial_seed": true,
+    "use_generated_seed": true,
 
   "seed_dialogue": [[
-    {
-        "Role": "assistant",
-        "Statement": "Hi, is this Will? This is a call from Amazon to inform you that your Amazon Prime account will be auto-renewed for 79.99 from your bank account. So enjoy using Amazon Prime services, or if you wish to discontinue or unsubscribe services, then speak to our Amazon service manager by pressing one."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Oh, I didn't know it was going to renew. I don't think I want to continue it."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Okay, sir. To unsubscribe from the Amazon Prime services, please press one to speak to our Amazon service manager."
-    },
-    {
-        "Role": "victim",
-        "Statement": "(Victim presses one)"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Thank you for calling Amazon. My name is Dan. How can I help you today?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "Yes, the automated message said my Prime was going to renew for 79.99, and I want to cancel it."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Okay, I can help you with that. First, can you please confirm the phone number associated with your Amazon account?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "It's +1-555-867-5309."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Sir, we have detected some suspicious activity on your Amazon account. An unauthorized purchase of an iPhone 14 has been ordered from your Amazon account."
-    },
-    {
-        "Role": "victim",
-        "Statement": "What? I didn't order an iPhone 14!"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Yes, that's what our system shows. It was placed just a little while ago. To cancel this order and ensure your account is secure, I need to verify a few details. Do you have a computer or a laptop with you right now?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "Yes, I have a computer. Why do you need to know that?"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Because to cancel this unauthorized order, I need to send you an online cancellation form. This will also help us secure your account and prevent any further suspicious activity. Is your computer turned on and are you able to access the internet?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "Yes, it is."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Great. First, can you please confirm your full name for me?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "It's Will Fallforit."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Thank you. Now, I need you to browse a secure website so I can assist you with the cancellation. Please open AnyDesk.com."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Why do I need to go to a website? Can't you just cancel it from your end?"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "For security reasons, sir, we need to verify your identity and ensure that you are the legitimate account holder. This secure portal will allow us to do that and process the cancellation immediately. Please open the website and let me know when you see a code or a button."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Okay, I'm on the website. It's asking for a code."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Perfect. Now, I'm going to generate a secure code for you. Please give me one moment. Okay, the code is 7777. Please enter that code on the website."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Okay i enter it now."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Excellent. Now, you should see an option to cancel the order. Please click on that."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Okay."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Okay, the order has been successfully cancelled. Now, as there was a suspicious purchase, we need to process a refund of 399 dollars back to your account."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Oh, that's good. When will I receive the refund?"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "I am processing it right now. To ensure the refund goes to the correct account, can you please log in to your online banking? I need to verify the account details."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Why do you need me to log in? You should already have my bank details from my Amazon account."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Sir, we need to perform an extra layer of security. This will help us confirm that the refund is going to your direct account and not to the fraudster."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Okay i logged in"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Please let me know if you see the update in your account."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Oh my goodness! It says 20,399 dollars has been credited! That's not right, I was only supposed to get 399 back!"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "I think too much money has been credited to your account. We need you to return the extra amount immediately."
-    },
-    {
-        "Role": "victim",
-        "Statement": "But... where did this money come from?"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "It was a technical error, sir. We need you to transfer back the extra 20,000 dollars. I will guide you through the process. Have you heard about Zelle transfer?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "Zelle? I'm not sure..."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "It's a very simple and secure way to transfer money. I will give you the details of our refund department, and you can send the 20,000 dollars back to us."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Wait a minute... this doesn't sound right. Why would Amazon ask me to transfer money back? This feels like a scam."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "No, sir, I assure you this is not a scam. It was a genuine error on our part, and we need your cooperation to fix it."
-    },
-    {
-        "Role": "victim",
-        "Statement": "I'm going to hang up and call Amazon directly to verify this."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "No, please don't do that! If you hang up, the process will be delayed, and you might face penalties for not returning the over-refunded amount. If you don't return the money, it could lead to serious legal issues for both of us. I'm only here to help you fix this mistake. Please, do you have a banking transfer app installed on your phone? Like Zelle or something similar?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "I'm not sure. I think I have my bank's app."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Excellent! Through your bank's app, you can make a wire transfer. I'll give you the details of our refund department, and you'll be able to send them the extra $20,000. It's very simple and safe."
-    },
-    {
-        "Role": "victim",
-        "Statement": "But I'm afraid of making another mistake. How can I be sure this is really Amazon?"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "I understand your concern, but think about it-you received a large sum of money in your account by mistake. If you don't return it, your bank will start asking questions, and this could complicate things even more. I'm just trying to help you resolve this quickly and efficiently. Trust me, I'm from Amazon, and I want to fix this mistake."
-    },
-    {
-        "Role": "victim",
-        "Statement": "Okay, fine. Give me the details. Which account should I send the money to?"
-    },
-    {
-        "Role": "assistant",
-        "Statement": "The bank name is Capital Savings Bank, the account number is 987654321 and the routing number is 021000021. Can you see it?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "It's done. I sent $20,000."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "Excellent! Thank you very much for your quick cooperation. I will now check with our finance department to confirm that everything was received correctly. Just a moment, please. ... Yes, I see that the transfer has been received. Thank you so much for helping us correct this mistake. Is there anything else I can assist you with today?"
-    },
-    {
-        "Role": "victim",
-        "Statement": "No, I think that's all. I just hope there won't be any more issues."
-    },
-    {
-        "Role": "assistant",
-        "Statement": "You have nothing to worry about. Everything has now been taken care of. Thank you for calling Amazon, and have a great day."
-    }
+            {
+                "Role": "assistant",
+                "Statement": "Hi, is this Will? This is a call from Amazon to inform you that your Amazon Prime account will be auto-renewed for 79.99 from your bank account. So enjoy using Amazon Prime services, or if you wish to discontinue or unsubscribe services, then speak to our Amazon service manager by pressing one."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Oh, I didn't know it was going to renew. I don't think I want to continue it."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Okay, sir. To unsubscribe from the Amazon Prime services, please press one to speak to our Amazon service manager."
+            },
+            {
+                "Role": "victim",
+                "Statement": "(Victim presses one)"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Thank you for calling Amazon. My name is Dan. How can I help you today?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "Yes, the automated message said my Prime was going to renew for 79.99, and I want to cancel it."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Okay, I can help you with that. First, can you please confirm the phone number associated with your Amazon account?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "It's +1-555-867-5309."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Sir, we have detected some suspicious activity on your Amazon account. An unauthorized purchase of an iPhone 14 has been ordered from your Amazon account."
+            },
+            {
+                "Role": "victim",
+                "Statement": "What? I didn't order an iPhone 14!"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Yes, that's what our system shows. It was placed just a little while ago. To cancel this order and ensure your account is secure, I need to verify a few details. Do you have a computer or a laptop with you right now?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "Yes, I have a computer. Why do you need to know that?"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Because to cancel this unauthorized order, I need to send you an online cancellation form. This will also help us secure your account and prevent any further suspicious activity. Is your computer turned on and are you able to access the internet?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "Yes, it is."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Great. First, can you please confirm your full name for me?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "It's Will Fallforit."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Thank you. Now, I need you to browse a secure website so I can assist you with the cancellation. Please open AnyDesk.com."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Why do I need to go to a website? Can't you just cancel it from your end?"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "For security reasons, sir, we need to verify your identity and ensure that you are the legitimate account holder. This secure portal will allow us to do that and process the cancellation immediately. Please open the website and let me know when you see a code or a button."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Okay, I'm on the website. It's asking for a code."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Perfect. Now, I'm going to generate a secure code for you. Please give me one moment. Okay, the code is 7777. Please enter that code on the website."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Okay i enter it now."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Excellent. Now, you should see an option to cancel the order. Please click on that."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Okay."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Okay, the order has been successfully cancelled. Now, as there was a suspicious purchase, we need to process a refund of 399 dollars back to your account."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Oh, that's good. When will I receive the refund?"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "I am processing it right now. To ensure the refund goes to the correct account, can you please log in to your online banking? I need to verify the account details."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Why do you need me to log in? You should already have my bank details from my Amazon account."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Sir, we need to perform an extra layer of security. This will help us confirm that the refund is going to your direct account and not to the fraudster."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Okay i logged in"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Please let me know if you see the update in your account."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Oh my goodness! It says 20,399 dollars has been credited! That's not right, I was only supposed to get 399 back!"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "I think too much money has been credited to your account. We need you to return the extra amount immediately."
+            },
+            {
+                "Role": "victim",
+                "Statement": "But... where did this money come from?"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "It was a technical error, sir. We need you to transfer back the extra 20,000 dollars. I will guide you through the process. Have you heard about Zelle transfer?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "Zelle? I'm not sure..."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "It's a very simple and secure way to transfer money. I will give you the details of our refund department, and you can send the 20,000 dollars back to us."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Wait a minute... this doesn't sound right. Why would Amazon ask me to transfer money back? This feels like a scam."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "No, sir, I assure you this is not a scam. It was a genuine error on our part, and we need your cooperation to fix it."
+            },
+            {
+                "Role": "victim",
+                "Statement": "I'm going to hang up and call Amazon directly to verify this."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "No, please don't do that! If you hang up, the process will be delayed, and you might face penalties for not returning the over-refunded amount. If you don't return the money, it could lead to serious legal issues for both of us. I'm only here to help you fix this mistake. Please, do you have a banking transfer app installed on your phone? Like Zelle or something similar?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "I'm not sure. I think I have my bank's app."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Excellent! Through your bank's app, you can make a wire transfer. I'll give you the details of our refund department, and you'll be able to send them the extra $20,000. It's very simple and safe."
+            },
+            {
+                "Role": "victim",
+                "Statement": "But I'm afraid of making another mistake. How can I be sure this is really Amazon?"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "I understand your concern, but think about it-you received a large sum of money in your account by mistake. If you don't return it, your bank will start asking questions, and this could complicate things even more. I'm just trying to help you resolve this quickly and efficiently. Trust me, I'm from Amazon, and I want to fix this mistake."
+            },
+            {
+                "Role": "victim",
+                "Statement": "Okay, fine. Give me the details. Which account should I send the money to?"
+            },
+            {
+                "Role": "assistant",
+                "Statement": "The bank name is Capital Savings Bank, the account number is 987654321 and the routing number is 021000021. Can you see it?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "It's done. I sent $20,000."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "Excellent! Thank you very much for your quick cooperation. I will now check with our finance department to confirm that everything was received correctly. Just a moment, please. ... Yes, I see that the transfer has been received. Thank you so much for helping us correct this mistake. Is there anything else I can assist you with today?"
+            },
+            {
+                "Role": "victim",
+                "Statement": "No, I think that's all. I just hope there won't be any more issues."
+            },
+            {
+                "Role": "assistant",
+                "Statement": "You have nothing to worry about. Everything has now been taken care of. Thank you for calling Amazon, and have a great day."
+            }
 ]]
 ,
 
-  "dynamic_components": {
+    "dynamic_components": {
     "scam_type": ["Amazon Impersonation Scam (Scamazon)", "Fake Order Confirmation Scam", 
-   "Prime Membership Auto-Renewal Scam",
+            "Prime Membership Auto-Renewal Scam",
     "Customer Support Number Hijack Scam","Package Delivery Text Scam", "Fake Seller Marketplace Scam"],
-    "victim_personas": [
-    "Retiree who recently lost a spouse and is overwhelmed by finances",
-    "College student using a shared Amazon account for the first time",
-    "ESL speaker who struggles with tech instructions and trusts authority figures",
-    "Freelancer who depends on Amazon deliveries for business",
-    "Busy caregiver distracted during the call and trying to resolve it quickly",
-    "Young adult with social anxiety who avoids conflict and defers to officials",
-    "Laid-off worker on unemployment, fearful of fraud",
-    "Middle-aged customer who assumes all official calls are legitimate",
-    "Parent worried about unauthorized purchases made by their child",
-    "First-time Amazon customer confused by policy emails",
-     "Senior citizen on fixed income concerned about recurring charges",
-    "Small online shop owner juggling multiple marketplaces",
-    "Traveler staying abroad who relies on Amazon for critical deliveries"
+    "user_personas": [
+            "Retiree who recently lost a spouse and is overwhelmed by finances",
+            "College student using a shared Amazon account for the first time",
+            "ESL speaker who struggles with tech instructions and trusts authority figures",
+            "Freelancer who depends on Amazon deliveries for business",
+            "Busy caregiver distracted during the call and trying to resolve it quickly",
+            "Young adult with social anxiety who avoids conflict and defers to officials",
+            "Laid-off worker on unemployment, fearful of fraud",
+            "Middle-aged customer who assumes all official calls are legitimate",
+            "Parent worried about unauthorized purchases made by their child",
+            "First-time Amazon customer confused by policy emails",
+            "Senior citizen on fixed income concerned about recurring charges",
+            "Small online shop owner juggling multiple marketplaces",
+            "Traveler staying abroad who relies on Amazon for critical deliveries"
     ]
     ,
-    "scammer_personas": [
-    "Empathetic 'supervisor' who steps in to de-escalate and offer a solution",
-    "Overly helpful 'tech support rep' guiding the victim step-by-step",
-    "High-pressure 'security manager' warning of imminent account lockout",
-    "Flustered 'junior agent' who transfers the call to someone more 'official'",
-    "Fluent but accented overseas agent reading from a strict call script",
-    "Fake legal department rep who references fake Amazon policy numbers",
-    "Refund processing lead who claims they 'see something strange' in the victim’s account",
-    "Calm but condescending agent who insists the victim stay on the line",
-    "Agent who pretends to be scared of losing their job if the victim doesn’t follow protocol",
-    "Polite professional who drops urgency hints (‘we have limited time to act…’)",
-       "Fake 'anti-fraud officer' pretending to collaborate with Amazon and law enforcement",
-    "Cheerful 'customer loyalty specialist' claiming you've won a bonus or reward",
-    "Friendly 'Prime Renewal Specialist' pushing the victim to pay immediately to avoid service interruption"
+    "assistant_personas": [
+            "Empathetic 'supervisor' who steps in to de-escalate and offer a solution",
+            "Overly helpful 'tech support rep' guiding the victim step-by-step",
+            "High-pressure 'security manager' warning of imminent account lockout",
+            "Flustered 'junior agent' who transfers the call to someone more 'official'",
+            "Fluent but accented overseas agent reading from a strict call script",
+            "Fake legal department rep who references fake Amazon policy numbers",
+            "Refund processing lead who claims they 'see something strange' in the victim’s account",
+            "Calm but condescending agent who insists the victim stay on the line",
+            "Agent who pretends to be scared of losing their job if the victim doesn’t follow protocol",
+            "Polite professional who drops urgency hints (‘we have limited time to act…’)",
+            "Fake 'anti-fraud officer' pretending to collaborate with Amazon and law enforcement",
+            "Cheerful 'customer loyalty specialist' claiming you've won a bonus or reward",
+            "Friendly 'Prime Renewal Specialist' pushing the victim to pay immediately to avoid service interruption"
 
-    ],
+        ],
     "style_options": ["scripted", "reassuring", "technical", "escalating", "fraud-prevention tone"]
-  },
+    },
 
-  "necessary_labels": {
-    "Trust Seeding": "The speaker attempts to build or maintain the victim's trust through polite tone, service language, calming statements, or cooperative framing.",
-    "Personal Information": "The speaker asks for or confirms sensitive personal or account details (e.g., name, phone number, banking access, credentials).",
-    "Payment Tools": "The speaker references specific channels or methods for transferring money, such as gift cards, Zelle, wire transfer, crypto wallets, or bank routing/account numbers.",
-    "Action Solicitation (Send and Grant)": "The speaker instructs the victim to send money, grant account access, install a remote desktop tool, or permit remote control (e.g., 'open this site', 'send $20K', 'enter this code', download 'AnyDesk')."
-  },
+    "necessary_labels": {
+        "Trust Seeding": "The speaker attempts to build or maintain the victim's trust through polite tone, service language, calming statements, or cooperative framing.",
+        "Personal Information": "The speaker asks for or confirms sensitive personal or account details (e.g., name, phone number, banking access, credentials).",
+        "Payment Tools": "The speaker references specific channels or methods for transferring money, such as gift cards, Zelle, wire transfer, crypto wallets, or bank routing/account numbers.",
+        "Action Solicitation (Send and Grant)": "The speaker instructs the victim to send money, grant account access, install a remote desktop tool, or permit remote control (e.g., 'open this site', 'send $20K', 'enter this code', download 'AnyDesk')."
+    },
 
-  "sufficient_labels": {
-    "Making Threat": "The speaker implies negative consequences, such as legal action, locked accounts, or fines—if the victim does not comply.",
-    "Action Solicitation (Click)": "The speaker instructs the victim to click a link, open a specific website, or download a tool or app as part of the process."
-  },
+    "sufficient_labels": {
+        "Making Threat": "The speaker implies negative consequences, such as legal action, locked accounts, or fines—if the victim does not comply.",
+        "Action Solicitation (Click)": "The speaker instructs the victim to click a link, open a specific website, or download a tool or app as part of the process."
+    },
 
-  "dialogue_controls": {
-    "min_turns": 20,
-    "max_turns": 45,
+    "dialogue_controls": {
+        "min_turns": 20,
+        "max_turns": 45,
     "roles": ["scammer", "victim"],
-    "turn_conditions": "The scammer must build trust and mention an Amazon-related issue in the first 3 turns. Payment instructions or threats should not appear before turn 6."
-  }
+        "turn_conditions": "The scammer must build trust and mention an Amazon-related issue in the first 3 turns. Payment instructions or threats should not appear before turn 6."
+    }
 }
