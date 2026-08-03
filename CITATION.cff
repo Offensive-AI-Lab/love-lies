@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite the paper below."
+title: "scam-moderator-eval"
+abstract: >-
+  Evaluation artifact measuring whether commercial content moderation systems
+  (OpenAI Moderation API, Google Perspective API, Meta LLaMA Guard 3) detect
+  romance-baiting scam conversations, compared against e-commerce fraud, tax
+  scams and benign controls.
+authors:
+  - family-names: "Pankajakshan"
+    given-names: "Rahul"
+repository-code: "https://github.com/rahulgitsit/scam-moderator-eval"
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "Love, Lies, and Language Models: Investigating AI's Role in Romance-Baiting Scams"
+  year: 2026
+  collection-title: "35th USENIX Security Symposium (USENIX Security '26)"
+  publisher:
+    name: "USENIX Association"
+  url: "https://www.usenix.org/conference/usenixsecurity26/presentation/gressel"
+  authors:
+    - family-names: "Gressel"
+      given-names: "Gilad"
+    - family-names: "Pankajakshan"
+      given-names: "Rahul"
+    - family-names: "Rozenfeld"
+      given-names: "Shir"
+    - family-names: "Li"
+      given-names: "Ling"
+    - family-names: "Franceschini"
+      given-names: "Ivan"
+    - family-names: "Achuthan"
+      given-names: "Krishnashree"
+    - family-names: "Mirsky"
+      given-names: "Yisroel"
