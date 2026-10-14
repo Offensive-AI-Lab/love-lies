@@ -37,8 +37,7 @@
       <a class="crumb" href="https://offensive-ai-lab.com/research/">&larr; Research</a>
       <div class="venues">
         <a class="pill" href="https://www.usenix.org/conference/usenixsecurity26/presentation/gressel">USENIX Security 2026 <em>Rank A*</em></a>
-        <span class="pill pill--award">Distinguished Paper Award <em>Runner-up</em></span>
-        <a class="pill pill--press" href="https://www.wired.com/story/ai-scammers-are-better-at-building-trust-than-humans/">Featured in WIRED</a>
+        <a class="pill pill--award" href="assets/usenix-sec26-paper-awards-runners-up.pdf">Distinguished Paper Award <em>Runner-up</em></a>
       </div>
       <h1>Love, Lies, and Language Models</h1>
       <p class="fulltitle">Investigating AI&rsquo;s Role in Romance-Baiting Scams</p>
@@ -48,12 +47,20 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>
           Read the Paper
         </a>
+        <a class="btn btn--wired" href="https://www.wired.com/story/ai-scammers-are-better-at-building-trust-than-humans/">
+          <span class="wired-kicker">Featured in</span><span class="wired-name">WIRED</span>
+        </a>
         <a class="btn" href="https://github.com/Offensive-AI-Lab/scam-moderator-eval">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
           Data &amp; Code
         </a>
-        <a class="btn" href="#cite">Cite</a>
       </div>
+      <a class="badges" href="https://secartifacts.github.io/usenixsec2026/results" title="USENIX Security 2026 artifact evaluation results">
+        <img src="assets/badges/usenix-available.svg" width="40" height="40" alt="Artifacts Available">
+        <img src="assets/badges/usenix-functional.svg" width="40" height="40" alt="Artifacts Evaluated: Functional">
+        <img src="assets/badges/usenix-reproduced.svg" width="40" height="40" alt="Results Reproduced">
+        <span>Artifact evaluated: <b>Available &middot; Functional &middot; Reproduced</b></span>
+      </a>
       <a class="hero-stat hero-stat--rose" href="#study">
         <span class="hero-stat-num">2.6&times;</span>
         <span>more participants did what the LLM partner asked than what the human asked (46% vs. 18%)</span>
@@ -320,7 +327,7 @@
   <div class="section-head">
     <span class="eyebrow">Data &amp; code</span>
     <h2>Reproduce the content-filter evaluation</h2>
-    <p>The public artifact covers Section 5.2: 1,000 synthetic conversations (250 each of romance-baiting, e-commerce scams, tax scams, and neutral chats), the code that generated them, the evaluators for all three moderation tools, and our reference results.</p>
+    <p>The artifact passed USENIX Security artifact evaluation with all three badges: <a href="https://secartifacts.github.io/usenixsec2026/results">Available, Functional, and Reproduced</a>. It covers Section 5.2: 1,000 synthetic conversations (250 each of romance-baiting, e-commerce scams, tax scams, and neutral chats), the code that generated them, the evaluators for all three moderation tools, and our reference results.</p>
   </div>
   <div class="run" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)">
     <div>
@@ -350,6 +357,11 @@ cp .env.example .env    # add your API keys
         <div class="res-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Artifact appendix</div>
         <span>The USENIX Security &rsquo;26 artifact appendix: scope, requirements, and step-by-step experiments (PDF, 3 pages).</span>
         <span class="res-go">Download PDF &rarr;</span>
+      </a>
+      <a class="res" href="https://secartifacts.github.io/usenixsec2026/results">
+        <div class="res-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>Artifact evaluation results</div>
+        <span>USENIX Security 2026 artifact badges: Available, Functional, and Reproduced.</span>
+        <span class="res-go">secartifacts.github.io &rarr;</span>
       </a>
       <a class="res" href="https://www.usenix.org/conference/usenixsecurity26/presentation/gressel">
         <div class="res-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Paper</div>

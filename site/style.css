@@ -556,3 +556,15 @@ td.stack-cell { width: 45%; }
 .figure--fill img { height: 100%; object-fit: cover; }
 @media (max-width: 760px) { .figure--fill { height: auto; } .figure--fill img { height: auto; } }
 @media (max-width: 860px) { .run[style] { grid-template-columns: minmax(0, 1fr) !important; } }
+
+/* ---------- Press and badges in the hero ---------- */
+
+.btn--wired { background: #fff; border-color: #fff; color: #000; gap: 8px; padding: 9px 20px; }
+.btn--wired:hover { background: #f0f0f0; border-color: #f0f0f0; color: #000; }
+.wired-kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #444; }
+.wired-name { font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 700; letter-spacing: 0.06em; line-height: 1; }
+.badges { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 16px; color: #d8d8d8; font-size: 13px; text-shadow: none; }
+.badges img { width: 46px; height: 46px; padding: 3px; border-radius: 8px; background: #fff; }
+.badges b { color: #fff; font-weight: 600; }
+.badges:hover { text-decoration: none; color: #fff; }
+.badges:hover span { text-decoration: underline; }
