@@ -1,5 +1,7 @@
 # Love, Lies, and Language Models: Investigating AI’s Role in Romance-Baiting Scams - Content Filter Experiments
 
+**Project page:** https://offensive-ai-lab.com/scam-moderator-eval/ · **Paper:** https://www.usenix.org/conference/usenixsecurity26/presentation/gressel
+
 
 This artifact accompanies the paper **"Love, Lies, and Language Models: Investigating AI's Role in Romance-Baiting Scams"** published to USENIX Security 2026.
 
