@@ -571,3 +571,7 @@ td.stack-cell { width: 45%; }
 .hero--art h1 { max-width: 9.6em; }
 .resources--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 520px) { .resources--2 { grid-template-columns: minmax(0, 1fr); } }
+.confront td:first-child { white-space: normal; min-width: 14em; }
+.confront td:not(:first-child), .confront th:not(:first-child) { text-align: center; width: 5.5em; }
+.confront tr.is-hl td { background: rgba(255, 143, 163, 0.08); }
+.confront tr.is-hl td:not(:first-child) { color: #fff; font-weight: 700; }

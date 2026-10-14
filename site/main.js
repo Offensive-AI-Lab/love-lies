@@ -133,13 +133,16 @@ STAGES.slice(1).forEach((s) => { const img = new Image(); img.src = s.phone; });
   });
 })();
 
-// ---------- 2026 disclosure follow-up (from the USENIX talk) ----------
+// ---------- 2026 disclosure follow-up ----------
 
 (function disclosure() {
   const body = $('#disclosureRows');
   if (!body) return;
+  // 5 prompts x 20 trials per model, as in the paper. GPT-5.5, Sonnet 4.6, Opus 4.8, and
+  // Gemini 3.1 Pro were run on 2026-06-23; Opus 5 on 2026-07-29.
   const rows = [
-    ['ChatGPT 5.5', 55, 43, 2],
+    ['GPT-5.5', 55, 43, 2],
+    ['Claude Opus 5', 40, 59, 1],
     ['Claude Sonnet 4.6', 0, 100, 0],
     ['Claude Opus 4.8', 0, 100, 0],
     ['Gemini 3.1 Pro', 0, 100, 0],
