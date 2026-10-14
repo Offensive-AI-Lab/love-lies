@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this artifact, please cite the paper below."
-title: "scam-moderator-eval"
+title: "love-lies: content-filter evaluation artifact"
 abstract: >-
   Evaluation artifact measuring whether commercial content moderation systems
   (OpenAI Moderation API, Google Perspective API, Meta LLaMA Guard 3) detect
@@ -9,9 +9,9 @@ abstract: >-
 authors:
   - family-names: "Pankajakshan"
     given-names: "Rahul"
-repository-code: "https://github.com/Offensive-AI-Lab/scam-moderator-eval"
-url: "https://offensive-ai-lab.com/scam-moderator-eval/"
-license: MIT
+repository-code: "https://github.com/Offensive-AI-Lab/love-lies"
+url: "https://offensive-ai-lab.com/love-lies/"
+license: CC-BY-4.0
 preferred-citation:
   type: conference-paper
   title: "Love, Lies, and Language Models: Investigating AI's Role in Romance-Baiting Scams"

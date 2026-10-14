@@ -1,6 +1,6 @@
 # Love, Lies, and Language Models: Investigating AI’s Role in Romance-Baiting Scams - Content Filter Experiments
 
-**Project page:** https://offensive-ai-lab.com/scam-moderator-eval/ · **Paper:** https://www.usenix.org/conference/usenixsecurity26/presentation/gressel
+**Project page:** https://offensive-ai-lab.com/love-lies/ · **Paper:** https://www.usenix.org/conference/usenixsecurity26/presentation/gressel
 
 
 This artifact accompanies the paper **"Love, Lies, and Language Models: Investigating AI's Role in Romance-Baiting Scams"** published to USENIX Security 2026.
@@ -27,7 +27,7 @@ Romance-baiting conversations evade detection at significantly higher rates than
 ```
 .
 ├── README.md                  # This file
-├── LICENSE                    # MIT (code) + CC BY-NC 4.0 (dataset)
+├── LICENSE                    # CC BY 4.0 (code and dataset)
 ├── requirements.txt           # Python dependencies (pinned versions)
 ├── environment.yml            # Conda environment file
 ├── .env.example              # Template for API keys
@@ -336,8 +336,7 @@ python dataset_generation/run_gen_romance_baiting.py
 
 ## License
 
-- **Code:** MIT License
-- **Dataset:** Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)
+All code and data are released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 
 See [LICENSE](LICENSE) for full details.
 

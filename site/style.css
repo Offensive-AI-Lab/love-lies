@@ -404,7 +404,7 @@ td.best { font-weight: 700; color: #fff; }
     linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.78) 38%, rgba(0, 0, 0, 0.35) 66%, rgba(0, 0, 0, 0.05) 88%);
 }
 .hero--art .wrap { grid-template-columns: minmax(0, 1fr); padding-top: 40px; padding-bottom: 64px; min-height: clamp(380px, 44vw, 560px); }
-.hero--art .wrap > div { max-width: 620px; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7); }
+.hero--art .wrap > div { max-width: 720px; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7); }
 .hero--art h1 { font-size: clamp(2.3rem, 6.4vw, 3.7rem); letter-spacing: 0; }
 .pill--award { border-color: rgba(242, 196, 109, 0.55); background: rgba(242, 196, 109, 0.12); color: #f7deaa; }
 .pill--press { border-color: var(--line-strong); background: rgba(0, 0, 0, 0.4); color: #e6e6e6; }
@@ -555,7 +555,6 @@ td.stack-cell { width: 45%; }
 .figure--fill { height: 100%; }
 .figure--fill img { height: 100%; object-fit: cover; }
 @media (max-width: 760px) { .figure--fill { height: auto; } .figure--fill img { height: auto; } }
-@media (max-width: 860px) { .run[style] { grid-template-columns: minmax(0, 1fr) !important; } }
 
 /* ---------- Press and badges in the hero ---------- */
 
@@ -563,8 +562,12 @@ td.stack-cell { width: 45%; }
 .btn--wired:hover { background: #f0f0f0; border-color: #f0f0f0; color: #000; }
 .wired-kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #444; }
 .wired-name { font-family: Georgia, "Times New Roman", serif; font-size: 20px; font-weight: 700; letter-spacing: 0.06em; line-height: 1; }
-.badges { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-top: 16px; color: #d8d8d8; font-size: 13px; text-shadow: none; }
-.badges img { width: 46px; height: 46px; padding: 3px; border-radius: 8px; background: #fff; }
-.badges b { color: #fff; font-weight: 600; }
-.badges:hover { text-decoration: none; color: #fff; }
-.badges:hover span { text-decoration: underline; }
+.badges { display: inline-flex; align-items: center; gap: 6px; text-shadow: none; }
+.badges img { width: 30px; height: 30px; padding: 2px; border-radius: 6px; background: #fff; transition: transform 0.15s ease; }
+.badges:hover img { transform: translateY(-1px); }
+.run--stack { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.run--stack .resources { margin-top: 18px; }
+.hero--art .tagline { max-width: 34em; }
+.hero--art h1 { max-width: 9.6em; }
+.resources--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 520px) { .resources--2 { grid-template-columns: minmax(0, 1fr); } }
