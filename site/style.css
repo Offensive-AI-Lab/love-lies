@@ -337,13 +337,14 @@ td.best { font-weight: 700; color: #fff; }
 /* ---------- Footer ---------- */
 
 .site-footer { margin-top: 64px; border-top: 1px solid var(--rule); padding: 32px 0 40px; }
-.logos { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 22px; }
-.logo-tile { display: flex; align-items: center; justify-content: center; height: 64px; padding: 10px 16px; border-radius: 10px; background: #fff; }
-.logo-tile img { height: 40px; width: auto; }
-.logo-tile img[src*="amrita"] { height: 34px; }
-.logo-tile img[src*="microsoft"] { height: 26px; }
-.logo-tile img[src*="oai-logo"] { height: 28px; }
-.logo-tile--dark { background: #111; border: 1px solid var(--line); }
+.logos { display: flex; flex-wrap: wrap; align-items: center; gap: 22px 36px; margin: 18px 0 26px; }
+.logos img { height: 40px; width: auto; opacity: 0.9; }
+.logos img[src*="bgu"] { height: 50px; }
+.logos img[src*="amrita"] { height: 30px; }
+.logos img[src*="ca-foscari"] { height: 38px; }
+.logos img[src*="melbourne"] { height: 48px; }
+.logos img[src*="erc"] { height: 44px; }
+.logos img[src*="microsoft"] { height: 24px; }
 .footer-cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; font-size: 14px; }
 @media (max-width: 700px) { .footer-cols { grid-template-columns: minmax(0, 1fr); } }
 .footer-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
