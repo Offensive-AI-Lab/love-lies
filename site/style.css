@@ -78,6 +78,8 @@ strong, b { color: var(--heading); font-weight: 600; }
   white-space: nowrap;
 }
 .site-title:hover { color: #fff; text-decoration: none; }
+.site-title { display: inline-flex; align-items: center; gap: 0.4em; }
+.site-logo { height: 0.85em; width: auto; }
 .site-nav { display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; }
 .site-nav::-webkit-scrollbar { display: none; }
 .site-nav a { color: var(--text); white-space: nowrap; padding: 14px 0; }
@@ -340,7 +342,7 @@ td.best { font-weight: 700; color: #fff; }
 .logo-tile img { height: 40px; width: auto; }
 .logo-tile img[src*="amrita"] { height: 34px; }
 .logo-tile img[src*="microsoft"] { height: 26px; }
-.logo-tile img[src*="oai-lab"] { height: 44px; }
+.logo-tile img[src*="oai-logo"] { height: 28px; }
 .logo-tile--dark { background: #111; border: 1px solid var(--line); }
 .footer-cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; font-size: 14px; }
 @media (max-width: 700px) { .footer-cols { grid-template-columns: minmax(0, 1fr); } }
